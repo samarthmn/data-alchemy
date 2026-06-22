@@ -13,6 +13,7 @@ from openai import OpenAI
 
 # Picked as the default when the local server has it installed.
 PREFERRED_DEFAULT_MODEL = "gpt-oss:20b"
+DEFAULT_OLLAMA_HOST = "http://127.0.0.1:11434"
 
 
 @dataclass
@@ -26,7 +27,7 @@ class OllamaModels:
 
 def load_models() -> OllamaModels:
     """Connect to the local Ollama server and list installed models. Call once at startup."""
-    host = os.getenv("OLLAMA_HOST")
+    host = (os.getenv("OLLAMA_HOST") or DEFAULT_OLLAMA_HOST).rstrip("/")
     ollama_client = ollama.Client(host=host)
     chat_client = OpenAI(base_url=f"{host}/v1", api_key="ollama")
 
