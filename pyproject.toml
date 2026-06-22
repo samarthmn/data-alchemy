@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "dotenv>=0.9.9",
+    "faker>=40.23.0",
     "gradio>=6.19.0",
     "ollama>=0.6.2",
     "openai>=2.43.0",
